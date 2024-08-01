@@ -1,22 +1,23 @@
-import axios from 'axios';
+import axios from "axios";
 
 export default async function handler(req, res) {
-    if (req.method === 'GET') {
+    if (req.method === "GET") {
         const options = {
-            method: 'GET',
-            url: 'https://qrcodeutils.p.rapidapi.com/qrcodefree',
+            method: "GET",
+            url: "https://qrcodeutils.p.rapidapi.com/qrcodefree",
             params: {
                 text: req.query.input,
-                validate: 'true',
-                size: '150',
-                type: 'svg', // type: svg, png etc
-                level: 'M' // level of validation
+                validate: "true",
+                size: "150",
+                type: "svg",
+                level: "M",
             },
             headers: {
-                'x-rapidapi-host': 'qrcodeutils.p.rapidapi.com',
-                'x-rapidapi-key': process.env.NEXT_PUBLIC_RAPIDAPI_KEY
-            }
+                "x-rapidapi-host": "qrcodeutils.p.rapidapi.com",
+                "x-rapidapi-key": process.env.NEXT_PUBLIC_RAPIDAPI_KEY,
+            },
         };
+
         axios
             .request(options)
             .then(function (response) {
